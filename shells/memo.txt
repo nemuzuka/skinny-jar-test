@@ -1,0 +1,25 @@
+[baseディレクトリ]
+/usr/local/skinny/batch/
+
+[配下に有るもの]
+app.jar(./skinny package:standalone で作成したもの)
+confディレクトリ(配下にlogbackの設定ファイルを格納する)
+
+[バッチ処置として起動]
+executeBatch.sh
+
+[Daemonとして起動]
+startup-daemon.sh
+    jsvcプロセスとして起動させるshell
+shutdown-daemon.sh
+    jsvcプロセスを停止させるshell
+appDaemon.service
+    CentOS7上で上記処理をservice化する時に使用する
+
+[手順]
+1. *.shに実行権限を付与
+2. appDaemon.serviceを /etc/systemd/system/ 配下にコピー、実行権限付与
+3. systemctl enable appDaemon でサービスとして登録完了
+
+# systemctl start appDaemon
+# systemctl stop appDaemon

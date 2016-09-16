@@ -1,0 +1,17 @@
+[Unit]
+Description=App Daemon
+After=network.target
+
+[Service]
+User=root
+Group=root
+Type=oneshot
+PIDFile=/usr/local/skinny/batch/appDaemon.pid
+RemainAfterExit=yes
+
+ExecStart=/usr/local/skinny/batch/startup-daemon.sh
+ExecStop=/usr/local/skinny/batch/shutdown-daemon.sh
+ExecReStart=/usr/local/skinny/batch/shutdown-daemon.sh;/usr/local/skinny/batch/shutdown-daemon.sh
+
+[Install]
+WantedBy=multi-user.target
